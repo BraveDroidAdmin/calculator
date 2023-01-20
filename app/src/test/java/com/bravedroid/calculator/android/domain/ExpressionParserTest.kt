@@ -1,5 +1,6 @@
 package com.bravedroid.calculator.android.domain
 
+import com.bravedroid.calculator.android.domain.models.CalculationBadFormatException
 import com.bravedroid.calculator.android.domain.models.ExpressionPart
 import com.bravedroid.calculator.android.domain.models.Operation
 import com.bravedroid.calculator.android.domain.models.Operation.ADD
@@ -93,7 +94,7 @@ class ExpressionParserTest {
         assertThat(expected).isEqualTo(actual)
     }
 
-    @Test(expected = NumberFormatException::class)
+    @Test(expected = CalculationBadFormatException::class)
     fun `Expression with more than one dot should not be accepted`() {
         parser = ExpressionParser("1.1.1")
         parser.parse()

@@ -1,5 +1,6 @@
 package com.bravedroid.calculator.android.domain
 
+import com.bravedroid.calculator.android.domain.models.CalculationBadFormatException
 import com.bravedroid.calculator.android.domain.models.ExpressionPart
 import com.bravedroid.calculator.android.domain.models.Operation
 import com.bravedroid.calculator.android.domain.models.Operation.Companion.OperationSymbols
@@ -42,7 +43,11 @@ class ExpressionParser(
                 i++
             }
         }
-        result.add(ExpressionPart.Number(numberAsString.toDouble()))
+        try {
+            result.add(ExpressionPart.Number(numberAsString.toDouble()))
+        } catch (e: NumberFormatException) {
+            throw CalculationBadFormatException("Calculation Bad Format", e)
+        }
         return i
     }
 
