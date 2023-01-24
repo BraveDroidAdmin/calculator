@@ -3,8 +3,6 @@ package com.bravedroid.calculator.android.domain
 import com.bravedroid.calculator.android.domain.models.CalculationBadFormatException
 import com.bravedroid.calculator.android.domain.models.ExpressionPart
 import com.bravedroid.calculator.android.domain.models.Operation
-import com.bravedroid.calculator.android.domain.models.Operation.ADD
-import com.bravedroid.calculator.android.domain.models.Operation.SUBTRACT
 import com.bravedroid.calculator.android.domain.models.ParenthesesType
 import com.bravedroid.calculator.android.domain.models.ParenthesesType.Closing
 import com.google.common.truth.Truth.assertThat
@@ -87,8 +85,8 @@ class ExpressionParserTest {
         val actual = parser.parse()
 
         val expected = listOf(
-            ExpressionPart.Op(ADD),
-            ExpressionPart.Op(SUBTRACT),
+            ExpressionPart.Op(Operation.ADD),
+            ExpressionPart.Op(Operation.SUBTRACT),
             ExpressionPart.Parentheses(Closing),
         )
         assertThat(expected).isEqualTo(actual)
