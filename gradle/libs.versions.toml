@@ -17,6 +17,7 @@ junit4 = "4.13.2"
 truth = "1.1.3"
 mockito = "4.0.0"
 compose = "1.1.1"
+
 [libraries]
 #kotlin
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
@@ -66,7 +67,6 @@ androidx_compose_ui_test_juint4 = { group = "androidx.compose.ui", name = "ui-te
 #mockito-core = { group = "org.mockito.kotlin", name = "mockito-core", version.ref = "mockito" }
 #mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito" }
 
-
 [bundles]
 kotlinJVM = ["kotlin-stdlib", "kotlin-reflect"]
 androidCore = ["androidx_core", "androidx_lifecycle"]
@@ -86,4 +86,6 @@ jetbrains_kotlin_jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"
 jetbrains_kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android_application = { id = "com.android.application", version = "7.4.0" }
 android_library = { id = "com.android.library", version = "7.4.0" }
+gms_google-service = { id = "com.google.gms.google-services", version = "4.3.14" }
+firebase_crashlytics = { id = "com.google.firebase.crashlytics", version = "2.9.2" }
 
