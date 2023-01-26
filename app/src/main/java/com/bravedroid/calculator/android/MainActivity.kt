@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.bravedroid.calculator.android.ui.components.Greeting
+import androidx.compose.ui.tooling.preview.Preview
+import com.bravedroid.calculator.android.ui.components.CrashAppButton
 import com.bravedroid.calculator.android.ui.theme.CalculatorTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,11 +18,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             CalculatorTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    CrashAppButton("Android")
                 }
             }
         }
     }
 }
 
+@Preview
+@Composable
+fun MainActivityPrev() {
+    CalculatorTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+            CrashAppButton("Android")
+        }
+    }
+}
