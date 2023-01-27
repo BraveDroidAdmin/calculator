@@ -1,5 +1,6 @@
 package com.bravedroid.cmp
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,11 @@ class ConsentFragment : DialogFragment() {
     private var _binding: FragmentConsentBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        showsDialog = true
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,10 +31,16 @@ class ConsentFragment : DialogFragment() {
         return binding.root
     }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = ConsentRequestAdapter()
+        binding.cmpVendorRecycler.adapter = adapter
         val data = consentViewModel.data.value
-        binding.cmpVendorRecycler.adapter = ConsentRequestAdapter(data)
+        adapter.submitList(data)
     }
 
     override fun onDestroyView() {
