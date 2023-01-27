@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'kotlin-kapt'
+    alias libs.plugins.gradle.plugins.hilt
 }
 
 android {
@@ -59,6 +61,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
+    implementation libs.hilt
+    kapt libs.hilt.compiler
+
     debugImplementation libs.bundles.composeAndroidTestsDebug
     androidTestImplementation libs.bundles.androidTests
     testImplementation libs.bundles.unitTests
@@ -66,4 +71,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+}
+
+kapt {
+    correctErrorTypes = true
 }
