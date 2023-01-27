@@ -5,50 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/appCompatCheckBox1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/consentRequestTv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:checked="true"
-        android:text="Consent type 1"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatCheckBox2"
+        android:layout_margin="8dp"
+        android:text="Accept data collection, and reading and storing data on your phone?"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        app:layout_constraintBottom_toTopOf="@+id/cmpVendorRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread">
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    </androidx.appcompat.widget.AppCompatCheckBox>
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/appCompatCheckBox2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cmpVendorRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:checked="true"
-        android:text="Consent type 2"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatCheckBox3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatCheckBox1">
-
-    </androidx.appcompat.widget.AppCompatCheckBox>
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/appCompatCheckBox3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:checked="true"
-        android:text="Consent type 3"
+        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatCheckBox2">
-
-    </androidx.appcompat.widget.AppCompatCheckBox>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/consentRequestTv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

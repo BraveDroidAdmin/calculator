@@ -8,8 +8,6 @@ import androidx.fragment.app.DialogFragment
 import com.bravedroid.cmp.databinding.FragmentConsentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class ConsentFragment : DialogFragment() {
@@ -24,15 +22,13 @@ class ConsentFragment : DialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentConsentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val data = consentViewModel.data.value
-        binding.appCompatCheckBox1.text = data
+        binding.cmpVendorRecycler.adapter = ConsentRequestAdapter(data)
     }
 
     override fun onDestroyView() {
