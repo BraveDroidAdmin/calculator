@@ -10,17 +10,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.bravedroid.calculator.android.ui.theme.CalculatorTheme
 
 @Composable
-fun CrashAppButton(name: String) {
+fun TestToolsButtonsGroup(onSendHit: () -> Unit) {
     Column(
-        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(onClick = {
             throw NullPointerException()
 
-        })
-        { Text("Test a Crash !") }
+        }) {
+            Text("Test a Crash !")
+        }
+        Button(onClick = {
+            onSendHit()
+        }) {
+            Text("Send a Hit !")
+        }
     }
 }
 
@@ -28,6 +36,6 @@ fun CrashAppButton(name: String) {
 @Composable
 fun CrashAppButtonPreview() {
     CalculatorTheme {
-        CrashAppButton("from Preview")
+        TestToolsButtonsGroup {}
     }
 }

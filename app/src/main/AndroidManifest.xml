@@ -17,6 +17,11 @@
             android:name=".OnboardingActivity"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents" />
+
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
