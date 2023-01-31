@@ -1,4 +1,4 @@
-package com.bravedroid.cmp
+package com.bravedroid.cmp.presentation
 
 import android.app.Dialog
 import android.os.Bundle

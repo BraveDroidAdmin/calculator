@@ -50,6 +50,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.fragment:fragment-ktx:1.5.5")
 
+    implementation(platform(libs.firebaseBom))
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
+
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 

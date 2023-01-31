@@ -1,4 +1,4 @@
-package com.bravedroid.cmp
+package com.bravedroid.cmp.presentation
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

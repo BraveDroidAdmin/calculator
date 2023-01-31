@@ -3,7 +3,7 @@ package com.bravedroid.calculator.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bravedroid.calculator.android.databinding.ActivityOnboardingBinding
-import com.bravedroid.cmp.ConsentFragment
+import com.bravedroid.cmp.presentation.ConsentFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
