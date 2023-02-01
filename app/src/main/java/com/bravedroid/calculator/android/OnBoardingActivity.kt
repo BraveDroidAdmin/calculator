@@ -1,13 +1,13 @@
 package com.bravedroid.calculator.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bravedroid.calculator.android.databinding.ActivityOnboardingBinding
 import com.bravedroid.cmp.presentation.ConsentFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OnboardingActivity : AppCompatActivity() {
+class OnBoardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +16,8 @@ class OnboardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val dialog = ConsentFragment()
+        dialog.show(supportFragmentManager, "consentFragment")
+
         binding.showCmpBtn.setOnClickListener {
             dialog.show(supportFragmentManager, "consentFragment")
         }

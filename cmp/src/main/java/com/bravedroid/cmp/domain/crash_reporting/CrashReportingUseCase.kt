@@ -5,7 +5,6 @@ import javax.inject.Inject
 class CrashReportingUseCase @Inject constructor(
     private val crashReporter: CrashReporter,
 ) {
-    fun enableCrashReporting() = crashReporter.enableCrashReporting()
-
-    fun disableCrashReporting() = crashReporter.disableCrashReporting()
+    internal fun enableCrashReporting() = crashReporter.enableCrashReporting()
+    internal fun disableCrashReporting() = crashReporter.disableCrashReporting()
 }

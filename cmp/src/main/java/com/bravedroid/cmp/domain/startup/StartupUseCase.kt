@@ -5,7 +5,7 @@ import com.bravedroid.cmp.domain.repository.CmpLocalRepository
 import com.bravedroid.cmp.domain.tracking.TrackingUseCase
 import javax.inject.Inject
 
-class StartupUseCase @Inject constructor(
+public class StartupUseCase @Inject constructor(
     private val crashReporterUseCases: CrashReportingUseCase,
     private val trackingUseCase: TrackingUseCase,
     private val cmpLocalRepository: CmpLocalRepository,
