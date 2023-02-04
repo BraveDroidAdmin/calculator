@@ -1,6 +1,5 @@
 package com.bravedroid.cmp.domain.tracking
 
-interface Tracker {
-    fun enableTracking()
-    fun disableTracking()
-}
+import com.bravedroid.cmp.domain.vendors.ConfigurableSdk
+
+interface Tracker : ConfigurableSdk

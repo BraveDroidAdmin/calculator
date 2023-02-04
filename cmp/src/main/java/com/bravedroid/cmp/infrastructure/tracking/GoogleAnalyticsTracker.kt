@@ -7,11 +7,9 @@ import javax.inject.Inject
 
 class GoogleAnalyticsTracker @Inject constructor() : Tracker {
 
-    override fun enableTracking() {
+    override fun enableSdk() =
         Firebase.analytics.setAnalyticsCollectionEnabled(true)
-    }
 
-    override fun disableTracking() {
+    override fun disableSdk() =
         Firebase.analytics.setAnalyticsCollectionEnabled(false)
-    }
 }

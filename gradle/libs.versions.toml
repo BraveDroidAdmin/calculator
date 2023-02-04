@@ -8,7 +8,7 @@ androidxLifecycle = "2.4.0"
 androidxPaging = "3.1.0"
 recyclerView = "1.2.1"
 constraintLayout = "2.1.2"
-kotlin = "1.7.20"
+kotlin = "1.8.0"
 kotlinxCoroutines = "1.6.0"
 hilt = "2.44.2"
 
@@ -98,8 +98,8 @@ composeAndroidTestsDebug = ["debug-ui-tooling", "debug-ui-test-manifest"]
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 jetbrains_kotlin_jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 jetbrains_kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-android_application = { id = "com.android.application", version = "7.4.0" }
-android_library = { id = "com.android.library", version = "7.4.0" }
+android_application = { id = "com.android.application", version = "7.4.1" }
+android_library = { id = "com.android.library", version = "7.4.1" }
 gms_google-service = { id = "com.google.gms.google-services", version = "4.3.14" }
 firebase_crashlytics = { id = "com.google.firebase.crashlytics", version = "2.9.2" }
 gradle-plugins-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 class CrashlyticsCrashReporter @Inject constructor() : CrashReporter {
 
-    override fun enableCrashReporting() =
+    override fun enableSdk() =
         Firebase.crashlytics.setCrashlyticsCollectionEnabled(true)
 
-    override fun disableCrashReporting() =
+    override fun disableSdk() =
         Firebase.crashlytics.setCrashlyticsCollectionEnabled(false)
 }
