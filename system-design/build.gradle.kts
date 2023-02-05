@@ -1,5 +1,6 @@
 @file:Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
 
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -8,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.bravedroid.cmp"
+    namespace = "com.bravedroid.design"
     compileSdk = 33
 
     defaultConfig {
@@ -51,20 +52,21 @@ android {
         }
     }
 }
-
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of("11"))
+    }
+}
 dependencies {
 
     implementation(libs.bundles.composeAndroidUI)
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
     implementation("com.google.android.material:material:1.8.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.fragment:fragment-ktx:1.5.5")
-    implementation("androidx.core:core-ktx:1.9.0")
-
-    implementation(platform(libs.firebaseBom))
-    implementation(libs.firebase.crashlytics)
-    implementation(libs.firebase.analytics)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.activity:activity-compose:1.6.1")
+    implementation("androidx.compose.material:material:1.3.1")
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
@@ -72,7 +74,4 @@ dependencies {
     debugImplementation(libs.bundles.composeAndroidTestsDebug)
     androidTestImplementation(libs.bundles.androidTests)
     testImplementation(libs.bundles.unitTests)
-}
-kapt {
-    correctErrorTypes = true
 }

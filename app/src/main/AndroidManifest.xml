@@ -37,6 +37,16 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name="com.bravedroid.calculator.internal.InternalActivity"
+            android:exported="true"
+            android:label="@string/title_activity_internal"
+            android:theme="@style/Theme.Calculator" />
+        <activity
+            android:name="com.bravedroid.design.DemoActivity"
+            android:exported="true"
+            android:label="@string/title_activity_demo"
+            android:theme="@style/Theme.Calculator" />
     </application>
 
 </manifest>

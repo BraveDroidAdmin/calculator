@@ -33,7 +33,7 @@ hilt_compiler = { module = "com.google.dagger:hilt-android-compiler", version.re
 
 #Compose
 androidx_activity_compose = { group = "androidx.activity", name = "activity-compose", version = "1.3.1" }
-androidx_compose_material3 = { group = "androidx.compose.material3", name = "material3", version = "1.1.0-alpha04" }
+androidx_compose_material3 = { group = "androidx.compose.material3", name = "material3", version = "1.1.0-alpha05" }
 androidx_compose_ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 androidx_compose_ui_tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
 androidx_navigation_compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.5.2" }

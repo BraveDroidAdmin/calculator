@@ -16,3 +16,5 @@ rootProject.name = "Calculator"
 include ':app'
 include ':domain'
 include ':cmp'
+include ':internal'
+include ':system-design'
