@@ -51,10 +51,22 @@ android {
         }
     }
 }
-
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of("11"))
+    }
+}
 dependencies {
 
-    implementation(libs.bundles.composeAndroidUI)
+//    implementation(libs.bundles.composeAndroidUI)
+    implementation(platform(libs.composeBom))
+    implementation (libs.composeActivity)
+    implementation (libs.composeLifecycleViewmodel)
+    implementation (libs.composeNavigation)
+    implementation(libs.composeMaterial3)
+    implementation(libs.composeToolingUiPreview)
+    debugImplementation(libs.composeDebugUiTooling)
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
     implementation("com.google.android.material:material:1.8.0")
@@ -69,7 +81,11 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    debugImplementation(libs.bundles.composeAndroidTestsDebug)
+//    debugImplementation(libs.bundles.composeAndroidTestsDebug)
+    androidTestImplementation(libs.composeBom)
+    androidTestImplementation(libs.composeTestJunit4)
+    debugImplementation(libs.composeTestManifest)
+
     androidTestImplementation(libs.bundles.androidTests)
     testImplementation(libs.bundles.unitTests)
 }

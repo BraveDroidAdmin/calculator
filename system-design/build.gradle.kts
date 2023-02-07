@@ -48,7 +48,7 @@ android {
     }
     packagingOptions {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+           excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
@@ -59,7 +59,7 @@ kotlin {
 }
 dependencies {
 
-    implementation(libs.bundles.composeAndroidUI)
+//    implementation(libs.bundles.composeAndroidUI)
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
@@ -71,7 +71,18 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    debugImplementation(libs.bundles.composeAndroidTestsDebug)
+//    debugImplementation(libs.bundles.composeAndroidTestsDebug)
+    implementation(platform(libs.composeBom))
+    implementation (libs.composeActivity)
+    implementation (libs.composeLifecycleViewmodel)
+    implementation (libs.composeNavigation)
+    implementation(libs.composeMaterial3)
+    implementation(libs.composeToolingUiPreview)
+    debugImplementation(libs.composeDebugUiTooling)
+    androidTestImplementation (libs.composeBom)
+    androidTestImplementation( libs.composeTestJunit4)
+    debugImplementation (libs.composeTestManifest)
+
     androidTestImplementation(libs.bundles.androidTests)
     testImplementation(libs.bundles.unitTests)
 }

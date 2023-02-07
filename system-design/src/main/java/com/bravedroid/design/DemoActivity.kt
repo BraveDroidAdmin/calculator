@@ -1,9 +1,11 @@
 package com.bravedroid.design
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,11 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import com.bravedroid.design.ui.theme.CalculatorTheme
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DemoActivity : ComponentActivity() {
+    private val vm by viewModels<StateViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -31,7 +38,7 @@ class DemoActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    StateManagingLayout { nameToAdd ->
+                    StateManagingLayout(vm.uiState) { nameToAdd ->
                         Toast.makeText(this@DemoActivity, "Add: $nameToAdd", Toast.LENGTH_SHORT)
                             .show()
                     }
@@ -41,14 +48,23 @@ class DemoActivity : ComponentActivity() {
     }
 }
 
+@HiltViewModel
+class StateViewModel @Inject constructor() : ViewModel() {
+    var uiState: MutableState<UiState> = mutableStateOf(
+        UiState.Default
+    )
+}
+
 @Composable
-fun StateManagingLayout(onAddName: (nameToAdd: String) -> Unit = {}) {
-    var name by remember {
-        mutableStateOf("")
+fun StateManagingLayout(
+    state: MutableState<UiState>,
+    onAddName: (nameToAdd: String) -> Unit = {},
+) {
+
+    var uiState: UiState by remember {
+        state
     }
-    var names by remember {
-        mutableStateOf(listOf<String>())
-    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -65,17 +81,19 @@ fun StateManagingLayout(onAddName: (nameToAdd: String) -> Unit = {}) {
             )
             OutlinedTextField(
                 modifier = Modifier.weight(1f),
-                value = name,
+                value = uiState.name,
                 onValueChange = {
-                    name = it
+                    uiState = uiState.copy(name = it)
                 })
             Button(
                 modifier = Modifier.padding(start = 20.dp),
                 onClick = {
-                    if (name.isNotBlank()) {
-                        onAddName(name)
-                        names = names + name
-                        name = ""
+                    if (uiState.name.isNotBlank()) {
+                        onAddName(uiState.name)
+                        uiState = uiState.copy(
+                            name = "",
+                            nameList = uiState.nameList + uiState.name,
+                        )
                     }
                 }) {
                 Text(text = "Add")
@@ -97,7 +115,7 @@ fun StateManagingLayout(onAddName: (nameToAdd: String) -> Unit = {}) {
                     color = Color(0xFF012B3D)
                 )
             }
-            items(names) { current ->
+            items(uiState.nameList) { current ->
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
                     text = current,
@@ -107,11 +125,21 @@ fun StateManagingLayout(onAddName: (nameToAdd: String) -> Unit = {}) {
     }
 }
 
+data class UiState(
+    val name: String,
+    val nameList: List<String>,
+) {
+    companion object {
+        val Default = UiState("", listOf())
+    }
+}
+
+@SuppressLint("UnrememberedMutableState")
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     CalculatorTheme {
-        StateManagingLayout()
+        StateManagingLayout(mutableStateOf(UiState.Default)) {}
     }
 }
 
