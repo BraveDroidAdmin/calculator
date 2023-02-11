@@ -1,11 +1,13 @@
 @file:Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
 
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    alias(libs.plugins.gradle.plugins.hilt)
+    id("com.google.dagger.hilt.android") version "2.44.2"
     kotlin("kapt")
 }
+//val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 android {
     namespace = "com.bravedroid.cmp"
@@ -51,28 +53,29 @@ android {
         }
     }
 }
+kapt {
+    correctErrorTypes = true
+}
 kotlin {
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of("11"))
     }
 }
-dependencies {
 
-//    implementation(libs.bundles.composeAndroidUI)
+dependencies {
     implementation(platform(libs.composeBom))
-    implementation (libs.composeActivity)
-    implementation (libs.composeLifecycleViewmodel)
-    implementation (libs.composeNavigation)
+    implementation(libs.composeActivity)
+    implementation(libs.composeLifecycleViewmodel)
+    implementation(libs.composeNavigation)
     implementation(libs.composeMaterial3)
     implementation(libs.composeToolingUiPreview)
     debugImplementation(libs.composeDebugUiTooling)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("com.google.android.material:material:1.8.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.fragment:fragment-ktx:1.5.5")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation(libs.androidxCore)
+    implementation(libs.androidxAppcompat)
+    implementation(libs.googleMaterial)
+    implementation(libs.androidxConstraintlayout)
+    implementation(libs.androidxFragment)
 
     implementation(platform(libs.firebaseBom))
     implementation(libs.firebase.crashlytics)
@@ -81,14 +84,10 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-//    debugImplementation(libs.bundles.composeAndroidTestsDebug)
     androidTestImplementation(libs.composeBom)
     androidTestImplementation(libs.composeTestJunit4)
     debugImplementation(libs.composeTestManifest)
 
     androidTestImplementation(libs.bundles.androidTests)
     testImplementation(libs.bundles.unitTestsBundle)
-}
-kapt {
-    correctErrorTypes = true
 }
