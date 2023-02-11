@@ -84,5 +84,5 @@ dependencies {
     debugImplementation (libs.composeTestManifest)
 
     androidTestImplementation(libs.bundles.androidTests)
-    testImplementation(libs.bundles.unitTests)
+    testImplementation(libs.bundles.unitTestsBundle)
 }

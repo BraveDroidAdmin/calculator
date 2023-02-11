@@ -1,8 +1,12 @@
+@file:Suppress("UnstableApiUsage")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
+        includeBuild("build-logic")
     }
 }
 dependencyResolutionManagement {
@@ -13,8 +17,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Calculator"
-include ':app'
-include ':domain'
-include ':cmp'
-include ':internal'
-include ':system-design'
+include(":app")
+include(":domain")
+include(":cmp")
+include(":internal")
+include(":system-design")
