@@ -1,3 +1,5 @@
+package extension
+
 import org.gradle.api.JavaVersion
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.jvm.toolchain.JavaLanguageVersion

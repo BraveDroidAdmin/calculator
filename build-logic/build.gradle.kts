@@ -1,4 +1,13 @@
+
+group = "com.bravedroid.buildlogic"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
 plugins {
+    `version-catalog`
     `kotlin-dsl`
     `kotlin-dsl-precompiled-script-plugins`
 }
@@ -9,10 +18,16 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.android.gradle.plugin)
-    implementation(libs.kotlin.gradle.plugin)
-
-//    // https://github.com/gradle/gradle/issues/15383
-//    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.firebase.crashlytics.gradle)
 }
-
+gradlePlugin {
+    plugins {
+        register("androidHilt") {
+            id = "nowinandroid.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
+    }
+}

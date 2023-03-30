@@ -2,11 +2,8 @@
 
 package extension
 
-import CalculatorVersions
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
-import composeVersion
-import gradle.kotlin.dsl.accessors.*
 import org.gradle.api.artifacts.VersionCatalog
 
 fun CommonExtension<*, *, *, *>.androidConfig() {

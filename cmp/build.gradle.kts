@@ -4,7 +4,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android") version "2.44.2"
+    alias(libs.plugins.hilt)
     kotlin("kapt")
 }
 //val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")

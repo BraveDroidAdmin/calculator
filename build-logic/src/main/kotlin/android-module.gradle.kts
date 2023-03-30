@@ -12,13 +12,13 @@ import org.gradle.kotlin.dsl.`java-library`
 import org.gradle.kotlin.dsl.kotlin
 
 
+val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-//    id ("com.google.dagger.hilt.android")
-    kotlin("kapt")
-}
-val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+    id("nowinandroid.android.hilt")
+ }
 
 //android {
 //    namespace = "com.bravedroid.cmp"
