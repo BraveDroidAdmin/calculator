@@ -1,4 +1,8 @@
 @file:Suppress("UnstableApiUsage")
+
+include(":core:testing")
+
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -17,8 +21,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Calculator"
-include(":app")
-include(":domain")
-include(":cmp")
-include(":internal")
-include(":system-design")
+val modules = arrayOf(
+    ":app", ":domain", ":cmp", ":internal", ":system-design",
+)
+include(*modules)

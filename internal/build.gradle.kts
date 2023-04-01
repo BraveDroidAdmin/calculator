@@ -2,10 +2,9 @@
 
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    alias(libs.plugins.gradle.plugins.hilt)
-    kotlin("kapt")
+    id("com.bravedroid.android.feature")
+    id("com.bravedroid.android.library.compose")
+    id("com.bravedroid.android.library.jacoco")
 }
 
 android {
@@ -63,26 +62,11 @@ kapt {
 
 dependencies {
 
-//    implementation(libs.bundles.composeAndroidUI)
-    implementation(libs.bundles.androidCore)
+    implementation(project(":system-design"))
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation(libs.androidxFragment)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle)
 
-    implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
-
-    implementation(platform(libs.composeBom))
-    implementation(libs.composeActivity)
-    implementation(libs.composeLifecycleViewmodel)
-    implementation(libs.composeNavigation)
-    implementation(libs.composeMaterial3)
-    implementation(libs.composeToolingUiPreview)
-    debugImplementation(libs.composeDebugUiTooling)
-
-    androidTestImplementation(libs.composeBom)
-    androidTestImplementation(libs.composeTestJunit4)
-    debugImplementation(libs.composeTestManifest)
-
-    testImplementation(libs.bundles.unitTestsBundle)
-
+    androidTestImplementation(project(":core:testing"))
 }
