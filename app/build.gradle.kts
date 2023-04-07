@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("com.bravedroid.android.application")
     id("com.bravedroid.android.application.compose")
@@ -60,10 +62,10 @@ kotlin {
     }
 }
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":cmp"))
-    implementation(project(":internal"))
-    implementation(project(":system-design"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:system-design"))
+    implementation(project(":feature:cmp"))
+    implementation(project(":feature:internal"))
 
     androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.accompanist.testharness)
@@ -84,7 +86,7 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.coil.kt)
-    implementation (libs.androidxConstraintlayout)
+    implementation (libs.androidx.constraintlayout)
 }
 
 kapt {

@@ -62,11 +62,11 @@ kapt {
 
 dependencies {
 
-    implementation(project(":system-design"))
+    implementation(project(":core:system-design"))
 
-    implementation(libs.androidxFragment)
+    implementation(libs.androidx.fragment)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle)
+    implementation(libs.androidx.lifecycle.runtime)
 
     androidTestImplementation(project(":core:testing"))
 }

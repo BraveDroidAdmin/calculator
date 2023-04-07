@@ -1,4 +1,5 @@
 import com.android.build.gradle.TestExtension
+import com.bravedroid.tools.CalculatorVersions
 import com.bravedroid.tools.configureGradleManagedDevices
 import com.bravedroid.tools.configureKotlinAndroid
 import org.gradle.api.Plugin
@@ -15,7 +16,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
 
             extensions.configure<TestExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = 31
+                defaultConfig.targetSdk = CalculatorVersions.targetSdk
                 configureGradleManagedDevices(this)
             }
         }

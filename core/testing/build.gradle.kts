@@ -16,6 +16,8 @@ dependencies {
     api(libs.androidx.test.runner)
     api(libs.hilt.android.testing)
     api(libs.junit4)
+    api(libs.mockito.kotlin)
+    api(libs.truth)
     api(libs.kotlinx.coroutines.test)
     api(libs.turbine)
 

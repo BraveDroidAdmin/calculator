@@ -1,6 +1,7 @@
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
+import com.bravedroid.tools.CalculatorVersions
 import com.bravedroid.tools.configureGradleManagedDevices
 import com.bravedroid.tools.configureKotlinAndroid
 import com.bravedroid.tools.configurePrintApksTask
@@ -18,7 +19,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = 33
+                defaultConfig.targetSdk = CalculatorVersions.targetSdk
                 configureGradleManagedDevices(this)
             }
             extensions.configure<ApplicationAndroidComponentsExtension> {

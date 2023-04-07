@@ -21,7 +21,12 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Calculator"
+
+val coreModules = arrayOf(":core:domain", ":core:system-design", ":core:testing")
+val featureModules = arrayOf(":feature:cmp", ":feature:internal")
 val modules = arrayOf(
-    ":app", ":domain", ":cmp", ":internal", ":system-design",
+    ":app",
+    *coreModules,
+    *featureModules,
 )
 include(*modules)

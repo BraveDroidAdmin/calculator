@@ -1,6 +1,6 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import com.bravedroid.tools.configureFlavors
+import com.bravedroid.tools.*
 import com.bravedroid.tools.configureGradleManagedDevices
 import com.bravedroid.tools.configureKotlinAndroid
 import com.bravedroid.tools.configurePrintApksTask
@@ -22,7 +22,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = 33
+                defaultConfig.targetSdk = CalculatorVersions.targetSdk
                 configureFlavors(this)
                 configureGradleManagedDevices(this)
             }

@@ -1,4 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.bravedroid.tools
+
 import com.android.build.api.variant.AndroidComponentsExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension

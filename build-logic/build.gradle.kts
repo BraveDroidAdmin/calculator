@@ -20,8 +20,10 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
-    compileOnly(libs.firebase.crashlytics.gradle)
-}
+    compileOnly(libs.firebase.crashlyticsGradle)
+    compileOnly(libs.firebase.performanceGradle)
+ }
+
 gradlePlugin {
     plugins {
         register("androidApplication") {
@@ -40,7 +42,6 @@ gradlePlugin {
             id = "com.bravedroid.android.application.flavors"
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"
         }
-
         register("androidFeature") {
             id = "com.bravedroid.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
@@ -53,8 +54,6 @@ gradlePlugin {
             id = "com.bravedroid.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
-
-
         register("androidLibraryJacoco") {
             id = "com.bravedroid.android.library.jacoco"
             implementationClass = "AndroidLibraryJacocoConventionPlugin"
@@ -71,7 +70,6 @@ gradlePlugin {
             id = "com.bravedroid.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
-
         register("androidFirebase") {
             id = "com.bravedroid.android.application.firebase"
             implementationClass = "AndroidApplicationFirebaseConventionPlugin"
