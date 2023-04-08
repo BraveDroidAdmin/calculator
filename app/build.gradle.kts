@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+import com.bravedroid.tools.CalculatorBuildType
+import extension.SigningConfigHelper.getSigningConfigProperties
+
 plugins {
     id("com.bravedroid.android.application")
     id("com.bravedroid.android.application.compose")
@@ -10,17 +13,11 @@ plugins {
     id("com.bravedroid.android.application.firebase")
 }
 
-//def apiKeyPropertiesFile = rootProject.file("keys/apikey.properties")
-//def apiKeyProperties = new Properties()
-//apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
-
 android {
     namespace = "com.bravedroid.calculator.android"
 
     defaultConfig {
         applicationId = "com.bravedroid.calculator.android"
-        minSdk = 24
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -30,13 +27,27 @@ android {
         }
     }
 
+    signingConfigs {
+        create("signing-config") {
+            val properties = getSigningConfigProperties()
+            keyAlias = properties.getProperty("keyAlias")
+            keyPassword = properties.getProperty("keyPassword")
+            storeFile = file(properties.getProperty("storeFile"))
+            storePassword = properties.getProperty("storePassword")
+        }
+    }
+
     buildTypes {
+        val debug by getting {
+            applicationIdSuffix = CalculatorBuildType.DEBUG.applicationIdSuffix
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("signing-config")
         }
     }
 
@@ -86,7 +97,7 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.coil.kt)
-    implementation (libs.androidx.constraintlayout)
+    implementation(libs.androidx.constraintlayout)
 }
 
 kapt {

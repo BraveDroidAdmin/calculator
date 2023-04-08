@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360761283573:android:82001a4d351d0f55c106bc",
+        "android_client_info": {
+          "package_name": "com.bravedroid.calculator.android.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360761283573-mjf15n52gf6ooo893c6q3sha4dvheh7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYmcGqB-RXvybzU2VRhpRzvseXqkRPXJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360761283573-mjf15n52gf6ooo893c6q3sha4dvheh7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
