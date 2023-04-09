@@ -11,7 +11,6 @@ plugins {
     id("jacoco")
     id("com.bravedroid.android.hilt")
     id("com.bravedroid.android.application.firebase")
-    id("com.bravedroid.android.quality")
 }
 
 android {
