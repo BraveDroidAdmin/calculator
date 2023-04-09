@@ -12,10 +12,11 @@ data class Vendor(
         val sdkToConfigure = configurableSdk.toList().first { sdk: ConfigurableSdk ->
             sdk.isInstantiableFrom(vendorType.sdkKClass)
         }
-        if (isAccepted)
+        if (isAccepted) {
             sdkToConfigure.enableSdk()
-        else
+        } else {
             sdkToConfigure.disableSdk()
+        }
     }
 
     private fun <T> T.isInstantiableFrom(kClass: KClass<*>) =
@@ -38,6 +39,7 @@ enum class VendorType(
         vendorDescription = "Google Crashlytics (to understand your interactions with the app crashes; sends data to Google)",
         CrashReporter::class,
     ),
+
     ;
 
     companion object {

@@ -6,9 +6,9 @@ import com.bravedroid.cmp.domain.vendors.SaveVendorsStateUseCase
 import com.bravedroid.cmp.presentation.VendorUiModel.Companion.toDomain
 import com.bravedroid.cmp.presentation.VendorUiModel.Companion.toUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import javax.inject.Inject
 
 @HiltViewModel
 class ConsentViewModel @Inject constructor(
@@ -33,4 +33,3 @@ class ConsentViewModel @Inject constructor(
         saveVendorsStateUseCase(vendorList)
     }
 }
-

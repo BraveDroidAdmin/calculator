@@ -18,17 +18,16 @@ fun TestToolsButtonsGroup(onSendHit: () -> Unit) {
             .fillMaxWidth()
             .fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Button(onClick = {
             throw NullPointerException()
-
-        }) {
+        },) {
             Text("Test a Crash !")
         }
         Button(onClick = {
             onSendHit()
-        }) {
+        },) {
             Text("Send a Hit !")
         }
     }

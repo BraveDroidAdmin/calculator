@@ -1,11 +1,9 @@
 package com.bravedroid.calculator.android
 
-import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -40,9 +38,10 @@ class MainActivity : ComponentActivity() {
                         xx()
                         val firebaseAnalytics = Firebase.analytics
                         firebaseAnalytics.logEvent(
-                            FirebaseAnalytics.Event.SELECT_ITEM, bundleOf(
+                            FirebaseAnalytics.Event.SELECT_ITEM,
+                            bundleOf(
                                 "CALC_TEST_HIT" to 50.0,
-                            )
+                            ),
                         )
                     }
                 }
@@ -51,7 +50,6 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun xx() {
-
         val now: Instant = Instant.now()
 
         // convert Instant to ZonedDateTime

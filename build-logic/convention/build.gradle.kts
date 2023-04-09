@@ -70,5 +70,9 @@ gradlePlugin {
             id = "com.bravedroid.android.application.firebase"
             implementationClass = "AndroidApplicationFirebaseConventionPlugin"
         }
+        register("quality") {
+            id = "com.bravedroid.android.quality"
+            implementationClass = "QualityConventionPlugin"
+        }
     }
 }

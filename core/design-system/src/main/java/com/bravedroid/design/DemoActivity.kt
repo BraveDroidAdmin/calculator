@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,53 +29,50 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class DemoActivity : ComponentActivity() {
     companion object {
-        //activate this flag and check the LayoutInspector when recomposition occurs everytime a new values from textField
+        // activate this flag and check the LayoutInspector when recomposition occurs everytime a new values from textField
         const val WITH_SHOWING_LOW_PERFORMANCE = true
     }
 
     private val vm by viewModels<StateViewModel>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 //            CalculatorTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = Color.Gray
-                ) {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-
-                        StateManagingLayout(vm.uiState, vm.name, vm.nameList) { nameToAdd ->
-                            Toast.makeText(this@DemoActivity, "Add: $nameToAdd", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-
-                        BoxColors()
+            // A surface container using the 'background' color from the theme
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = Color.Gray,
+            ) {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    StateManagingLayout(vm.uiState, vm.name, vm.nameList) { nameToAdd ->
+                        Toast.makeText(this@DemoActivity, "Add: $nameToAdd", Toast.LENGTH_SHORT)
+                            .show()
                     }
+
+                    BoxColors()
                 }
             }
         }
+    }
 //    }
 }
 
 @HiltViewModel
 class StateViewModel @Inject constructor() : ViewModel() {
     val uiState: MutableState<UiState> = mutableStateOf(
-        UiState.Default
+        UiState.Default,
     )
     val name: MutableState<String> = mutableStateOf(
-        ""
+        "",
     )
     val nameList: MutableState<List<String>> = mutableStateOf(
-        listOf()
+        listOf(),
     )
     var colorPen = mutableStateOf(1)
 
     fun update(it: Int) {
         colorPen.value = (it)
-
     }
 }
 
@@ -105,20 +101,24 @@ fun StateManagingLayout(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
     ) {
-
         Row(modifier = Modifier) {
             Text(
                 modifier = Modifier.padding(end = 20.dp),
-                text = "Please enter a name: "
+                text = "Please enter a name: ",
             )
             OutlinedTextField(
                 modifier = Modifier.weight(1f),
                 value = if (WITH_SHOWING_LOW_PERFORMANCE) uiState.name else name,
 
                 onValueChange = {
-                    if (WITH_SHOWING_LOW_PERFORMANCE) uiState = uiState.copy(name = it) else name =
-                        it
-                })
+                    if (WITH_SHOWING_LOW_PERFORMANCE) {
+                        uiState = uiState.copy(name = it)
+                    } else {
+                        name =
+                            it
+                    }
+                },
+            )
             Button(
                 modifier = Modifier.padding(start = 20.dp),
                 onClick = {
@@ -136,7 +136,6 @@ fun StateManagingLayout(
 
                             nameList = nameList + name
                             name = ""
-
                         }
                     }
                 },
@@ -157,7 +156,7 @@ fun StateManagingLayout(
                         .background(Color(0x1D03A9F4))
                         .padding(start = 16.dp),
                     text = "\uD83C\uDFC6 My added names: ",
-                    color = Color(0xFF012B3D)
+                    color = Color(0xFF012B3D),
                 )
             }
             if (WITH_SHOWING_LOW_PERFORMANCE) {
@@ -206,17 +205,18 @@ fun BoxColors() {
             {
                 // onBoxClick(2)
                 colorPen = 2
-            }, Modifier
+            },
+            Modifier
                 .height(100.dp)
                 .weight(1f)
-                .background(Color.Red)
+                .background(Color.Red),
 
         ) {
             Text(text = "Red")
         }
         Button(
             {
-                //onBoxClick(3)
+                // onBoxClick(3)
                 colorPen = (3)
             },
             Modifier
@@ -234,9 +234,7 @@ fun BoxColors() {
                 .background(Color.Gray)
                 .clickable {
                     colorPen = (4)
-
-
-                }
+                },
         )
         Box(
             Modifier
@@ -249,8 +247,8 @@ fun BoxColors() {
                         3 -> Color.Blue
                         4 -> Color.Gray
                         else -> Color.Cyan
-                    }
-                )
+                    },
+                ),
 
         )
     }
@@ -259,7 +257,7 @@ fun BoxColors() {
             Modifier
                 .height(100.dp)
                 .weight(.3f)
-                .background(Color.Black)
+                .background(Color.Black),
         ) {
             Text(
                 text = "DummyText",
@@ -269,8 +267,8 @@ fun BoxColors() {
                         1 -> Color.Green
                         2 -> Color.Red
                         else -> Color.Blue
-                    }
-                )
+                    },
+                ),
             )
         }
     }
@@ -290,22 +288,18 @@ data class UiState(
 @Composable
 fun DefaultPreview() {
 //    CalculatorTheme {
-        Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        StateManagingLayout(
+            mutableStateOf(UiState.Default),
+            mutableStateOf(""),
+            mutableStateOf(listOf()),
+        ) {}
 
-            StateManagingLayout(
-                mutableStateOf(UiState.Default),
-                mutableStateOf(""),
-                mutableStateOf(listOf()),
-            ) {}
-
-            var colorPen by remember {
-                mutableStateOf(Color.White)
-            }
-
-
-            BoxColors()
+        var colorPen by remember {
+            mutableStateOf(Color.White)
         }
+
+        BoxColors()
+    }
 //    }
 }
-
-

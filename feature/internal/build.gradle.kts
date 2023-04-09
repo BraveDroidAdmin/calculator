@@ -2,6 +2,7 @@ plugins {
     id("com.bravedroid.android.feature")
     id("com.bravedroid.android.library.compose")
     id("com.bravedroid.android.library.jacoco")
+    id("com.bravedroid.android.quality")
 }
 android {
     namespace = "com.bravedroid.internal"

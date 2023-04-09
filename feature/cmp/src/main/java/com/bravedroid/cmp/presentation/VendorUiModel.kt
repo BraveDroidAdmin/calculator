@@ -13,12 +13,12 @@ data class VendorUiModel(
             VendorUiModel(
                 vendorName = vendorType.vendorCommercialName,
                 vendorDescription = vendorType.vendorDescription,
-                isAccepted = isAccepted
+                isAccepted = isAccepted,
             )
 
         fun VendorUiModel.toDomain(): Vendor = Vendor(
             vendorType = VendorType.fromCommercialName(vendorName),
-            isAccepted = isAccepted
+            isAccepted = isAccepted,
         )
     }
 }

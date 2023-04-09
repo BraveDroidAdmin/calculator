@@ -6,6 +6,7 @@ enum class Operation(val symbol: Char) {
     MULTIPLY('x'),
     DIVIDE('/'),
     PERCENT('%'),
+
     ;
 
     companion object {

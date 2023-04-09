@@ -1,5 +1,6 @@
 plugins {
     id("kotlin")
+    id("com.bravedroid.android.quality")
 }
 
 dependencies {

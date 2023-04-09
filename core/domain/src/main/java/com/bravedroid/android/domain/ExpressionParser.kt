@@ -7,7 +7,7 @@ import com.bravedroid.calculator.android.domain.models.Operation.Companion.Opera
 import com.bravedroid.calculator.android.domain.models.ParenthesesType
 
 class ExpressionParser(
-    private val calculation: String
+    private val calculation: String,
 ) {
 
     fun parse(): List<ExpressionPart> {
@@ -19,7 +19,7 @@ class ExpressionParser(
             when {
                 curChar in OperationSymbols -> {
                     result.add(
-                        ExpressionPart.Op(Operation.fromSymbol(curChar))
+                        ExpressionPart.Op(Operation.fromSymbol(curChar)),
                     )
                 }
                 curChar.isDigit() -> {
@@ -58,8 +58,8 @@ class ExpressionParser(
                     '(' -> ParenthesesType.Opening
                     ')' -> ParenthesesType.Closing
                     else -> throw IllegalArgumentException("Invalid parentheses type")
-                }
-            )
+                },
+            ),
         )
     }
 }
