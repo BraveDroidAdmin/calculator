@@ -1,4 +1,4 @@
-package com.bravedroid.testing
+package com.bravedroid.core.testing
 
 import android.app.Application
 import android.content.Context

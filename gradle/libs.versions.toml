@@ -42,6 +42,8 @@ androidxWindowManager = "1.0.0"
 androidxWork = "2.7.1"
 androidxPaging = "3.1.1"
 androidxRecyclerview = "1.3.0"
+androidxFragmentKtx = "1.5.5"
+androidxConstraintlayout = "2.1.4"
 androidxTestCore = "1.5.0"
 androidxTestExt = "1.1.4"
 androidxTestRules = "1.5.0"
@@ -135,8 +137,8 @@ accompanist-testharness = { group = "com.google.accompanist", name = "accompanis
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 #ANDROIDX
 android-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
-androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version = "1.5.5" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragmentKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
 androidx-benchmark-macro = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "androidxMacroBenchmark" }

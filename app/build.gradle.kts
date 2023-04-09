@@ -20,8 +20,7 @@ android {
         applicationId = "com.bravedroid.calculator.android"
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.bravedroid.core.testing.CalculatorTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -67,17 +66,15 @@ android {
         }
     }
 }
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of("11"))
-    }
-}
+
 dependencies {
     implementation(project(":core:domain"))
-    implementation(project(":core:system-design"))
+    implementation(project(":core:design-system"))
     implementation(project(":feature:cmp"))
     implementation(project(":feature:internal"))
 
+    androidTestImplementation(project(":core:testing"))
+    testImplementation(project(":core:testing"))
     androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.accompanist.testharness)
     androidTestImplementation(kotlin("test"))
@@ -98,12 +95,4 @@ dependencies {
     implementation(libs.androidx.profileinstaller)
     implementation(libs.coil.kt)
     implementation(libs.androidx.constraintlayout)
-}
-
-kapt {
-    correctErrorTypes = true
-}
-
-hilt {
-    enableAggregatingTask = true
 }

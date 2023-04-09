@@ -6,15 +6,9 @@ java {
 }
 
 plugins {
-    `version-catalog`
     `kotlin-dsl`
-    `kotlin-dsl-precompiled-script-plugins`
 }
 
-repositories {
-    mavenCentral()
-    google()
-}
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
@@ -22,10 +16,11 @@ dependencies {
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.firebase.crashlyticsGradle)
     compileOnly(libs.firebase.performanceGradle)
- }
+}
 
 gradlePlugin {
     plugins {
+        //application
         register("androidApplication") {
             id = "com.bravedroid.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
@@ -42,6 +37,7 @@ gradlePlugin {
             id = "com.bravedroid.android.application.flavors"
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"
         }
+        //libraries ui and core
         register("androidFeature") {
             id = "com.bravedroid.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"

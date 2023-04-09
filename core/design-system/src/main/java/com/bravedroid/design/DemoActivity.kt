@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import com.bravedroid.design.DemoActivity.Companion.WITH_SHOWING_LOW_PERFORMANCE
-//import com.bravedroid.design.ui.theme.CalculatorTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
