@@ -30,7 +30,8 @@ android {
 
     signingConfigs {
         create("signing-config") {
-            val properties = SigningConfigHelper.getSigningConfigProperties(rootProject.file("/keys/keystore.properties"))
+            val properties = SigningConfigHelper.getSigningConfigProperties(File("../keys/keystore.properties"))
+//            val properties = SigningConfigHelper.getSigningConfigProperties(rootProject.file("/keys/keystore.properties"))
             keyAlias = properties.getProperty("keyAlias")
             keyPassword = properties.getProperty("keyPassword")
             storeFile = file(properties.getProperty("storeFile"))
