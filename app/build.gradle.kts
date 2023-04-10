@@ -1,7 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
 import com.bravedroid.tools.CalculatorBuildType
+import extension.SigningConfigHelper
 import extension.SigningConfigHelper.getSigningConfigProperties
+import java.util.*
 
 plugins {
     id("com.bravedroid.android.application")
@@ -28,7 +30,7 @@ android {
 
     signingConfigs {
         create("signing-config") {
-            val properties = getSigningConfigProperties()
+            val properties = SigningConfigHelper.getSigningConfigProperties(rootProject.file("/keys/keystore.properties"))
             keyAlias = properties.getProperty("keyAlias")
             keyPassword = properties.getProperty("keyPassword")
             storeFile = file(properties.getProperty("storeFile"))
