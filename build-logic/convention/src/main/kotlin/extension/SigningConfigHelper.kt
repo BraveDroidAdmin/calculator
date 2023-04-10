@@ -12,6 +12,6 @@ object SigningConfigHelper {
             }
             return properties
         }
-        throw IllegalStateException("keystore file not found")
+        throw IllegalStateException("keystore file not:  ${propertiesFile.absoluteFile}")
     }
 }
