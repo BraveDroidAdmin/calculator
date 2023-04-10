@@ -29,11 +29,11 @@ android {
 
     signingConfigs {
         create("signing-config") {
-            val properties = SigningConfigHelper.getSigningConfigProperties(rootProject.file("/keys/keystore.properties"))
-            keyAlias = properties.getProperty("keyAlias")
-            keyPassword = properties.getProperty("keyPassword")
-            storeFile = file(properties.getProperty("storeFile"))
-            storePassword = properties.getProperty("storePassword")
+            val signing = SigningConfigHelper.getSigningConfigProperties(rootProject.file("/keys/keystore.properties"))
+            keyAlias = signing.keyAlias
+            keyPassword = signing.keyPassword
+            storeFile = signing.storeFile
+            storePassword = signing.storePassword
         }
     }
 
@@ -47,8 +47,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            //           signingConfig = signingConfigs.getByName("debug")
-           signingConfig = signingConfigs.getByName("signing-config")
+            signingConfig = signingConfigs.getByName("signing-config")
         }
     }
 

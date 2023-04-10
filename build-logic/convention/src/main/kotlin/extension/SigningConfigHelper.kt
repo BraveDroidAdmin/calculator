@@ -5,21 +5,35 @@ import java.io.FileInputStream
 import java.util.*
 
 object SigningConfigHelper {
-    fun getSigningConfigProperties(propertiesFile: File): Properties {
-        if (propertiesFile.exists()) {
+    fun getSigningConfigProperties(propertiesFile: File): Signing {
+        return if (propertiesFile.exists()) {
             val properties = Properties().apply {
                 load(FileInputStream(propertiesFile))
             }
-            return properties
+            Signing.LOCAL(properties)
+        } else {
+            Signing.CI
         }
-        val f = File(System.getenv("HOME") + "/keys/keystore.properties")
-        if (propertiesFile.exists()) {
-            val properties = Properties().apply {
-                load(FileInputStream(f))
-            }
-            return properties
-        }
-
-        throw IllegalStateException("keystore file not:  ${f.absoluteFile}")
     }
+}
+
+sealed class Signing(
+    val keyAlias: String,
+    val keyPassword: String,
+    val storeFile: File,
+    val storePassword: String,
+) {
+    object CI : Signing(
+        keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS"),
+        keyPassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD"),
+        storeFile = File(System.getenv("HOME") + "/keystores/my_keystore.jks"),
+        storePassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD"),
+    )
+
+    class LOCAL(properties: Properties) : Signing(
+        keyAlias = properties.getProperty("keyAlias"),
+        keyPassword = properties.getProperty("keyPassword"),
+        storeFile = File(properties.getProperty("storeFile")),
+        storePassword = properties.getProperty("storePassword"),
+    )
 }
