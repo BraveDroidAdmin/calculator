@@ -42,3 +42,4 @@ subprojects {
         }
     }
 }
+tasks.getByPath(":app:preBuild").dependsOn("ktlintCheck")
