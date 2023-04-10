@@ -12,7 +12,7 @@ object SigningConfigHelper {
             }
             return properties
         }
-        val f =  File(System.getenv("HOME") + "/keys/keystore.properties")
+        val f =  File(System.getenv("PROJECT_LOCATION") + "/keys/keystore.properties")
         if (propertiesFile.exists()) {
         val properties = Properties().apply {
             load(FileInputStream(f))
