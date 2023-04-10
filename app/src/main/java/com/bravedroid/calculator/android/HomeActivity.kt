@@ -38,7 +38,7 @@ class HomeActivity : ComponentActivity() {
         Scaffold(
             snackbarHost = { SnackbarHost(snackbarHostState) },
             content = {
-                Text("OK", Modifier.padding(it))
+                Text("OKK", Modifier.padding(it))
             },
         )
     }
