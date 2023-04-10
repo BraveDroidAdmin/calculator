@@ -12,6 +12,14 @@ object SigningConfigHelper {
             }
             return properties
         }
-        throw IllegalStateException("keystore file not:  ${propertiesFile.absoluteFile}")
+        val f =  File(System.getenv("HOME") + "/keys/keystore.properties")
+        if (propertiesFile.exists()) {
+        val properties = Properties().apply {
+            load(FileInputStream(f))
+        }
+            return properties
+        }
+
+        throw IllegalStateException("keystore file not:  ${f.absoluteFile}")
     }
 }
